@@ -1,0 +1,661 @@
+<SeleView>:
+
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        padding: 50
+        spacing: 10
+        Label:
+            text: 'SELECT MENU'
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/5
+            font_size: 20
+            bold: True
+        Button:
+            text: "TRUCK ENTRANCE"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/5
+            id: fbtn
+            on_press:
+                app.root.current = 'entview'
+
+        Button:
+            text: "TRUCK EXIT"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/5
+            id: sbtn
+            on_press:
+                app.root.current = 'extview'
+        Button:
+            text: "CHECK TRUCK"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/5
+            on_press:
+                app.root.current= 'checktruck'
+
+<SeleExview>:
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        padding: 50
+        spacing: 10
+        Label:
+            text: 'TRUCK EXIT'
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/8
+            font_size: 20
+            bold: True
+        Button:
+            text: "TODAY"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/8
+            on_press:
+                app.root.current = 'extview'
+        Button:
+            text: "2 days ago"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/8
+            on_press:
+        Button:
+            text: "3 days ago"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/8
+            on_press:
+        Button:
+            text: "1 week ago"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/8
+            on_press:
+        Button:
+            text: "Choose Date Range"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/8
+            on_press:
+        Button:
+            text: "Return"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/10
+            on_press:
+
+
+<EntView>:
+    name: "entview"
+    grid_scroll: grid_scroll
+    GridLayout:
+        cols: 1
+        size_hint_y: 1
+        GridLayout:
+            size_hint_y: .2
+            id: grid_head
+            cols: 6
+            col_force_default: True
+            col_default_width: 170
+            row_force_default: True
+            row_default_height: 60
+
+
+
+
+            Label:
+                text: "No"
+            Label:
+                text: "DAY"
+            Label:
+                text: "DRIVER"
+            Label:
+                text: "TRUCK"
+            Label:
+                text: "SECURITY"
+            Label:
+                text: "TIME"
+
+        ScrollView:
+            size_hint_y: 1
+
+            do_scroll_y: True
+            id: scroll_view
+
+            GridLayout:
+                pos_hint: {"top": 0.7}
+                cols: 6
+                id: grid_scroll
+                col_force_default: True
+                col_default_width: 170
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    id: cl6
+                    size: self.texture_size
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    line_height: 2
+                Label:
+                    id: cl1
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    line_height: 2
+                Label:
+                    id: cl2
+                    size: self.texture_size
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    line_height: 2
+                Label:
+                    id: cl3
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    line_height: 2
+                Label:
+                    id: cl4
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    line_height: 2
+                Label:
+                    id: cl5
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    line_height: 2
+
+        BoxLayout:
+            size_hint_y: .4
+            orientation: 'horizontal'
+            height: self.minimum_height
+
+            Button:
+                size_hint: None, None
+                size_hint: .4, .2
+                text: 'Refresh'
+                on_press:
+                    root.print_data_frame1()
+
+            Button:
+                size_hint: None, None
+                size_hint: .4, .2
+                text: 'Return to Menu'
+                on_press:
+                    app.root.current = 'selectview'
+
+<ExtView>:
+    name: "extview"
+    GridLayout:
+        cols: 1
+        GridLayout:
+            id: grid_head
+            cols: 7
+            col_force_default: True
+            col_default_width: 200
+            row_force_default: True
+            row_default_height: 60
+            size_hint_y: .2
+
+            Label:
+                text: "No"
+            Label:
+                text: "DATE"
+            Label:
+                text: "TIME"
+            Label:
+                text: "CUSTOMER"
+            Label:
+                text: "COST"
+            Label:
+                text: "DRIVER"
+            Label:
+                text: "SECURITY"
+
+
+        ScrollView:
+
+            do_scroll_y: True
+            id: scroll_view
+            size_hint_y: 1
+
+            GridLayout:
+                cols: 7
+                id: grid_scroll
+                col_force_default: True
+                col_default_width: 200
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    id: cl1
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl7
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl2
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl3
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl4
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl5
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl6
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+
+        BoxLayout:
+            size_hint_y: .4
+            orientation: 'vertical'
+
+            Label:
+                id: tsum
+                font_size: 15
+
+            BoxLayout:
+                orientation: 'horizontal'
+
+                Button:
+                    size_hint: .4, .4
+                    text: 'TODAY'
+                    on_press:
+                        root.print_dataframe2()
+                Button:
+                    size_hint: .4, .4
+                    text: '2 DAYS AGO'
+                    on_press:
+                        root.print_dataframe2day()
+
+                Button:
+                    size_hint: .4, .4
+                    text: '3 DAYS AGO'
+                    on_press:
+                        root.print_dataframe3day()
+                Button:
+                    size_hint: .4, .4
+                    text: 'PAST WEEK'
+                    on_press:
+                        root.print_dataframe7day()
+                Button:
+                    size_hint: .4, .4
+                    text: 'TIME RANGE'
+                    on_press:
+                        app.root.current = 'timerange'
+
+                Button:
+                    size_hint: .4, .4
+                    text: 'Return to Menu'
+                    on_press:
+                        app.root.current = 'selectview'
+<Range_View>:
+    name: "timerange"
+    start_date: start_date
+    end_date: end_date
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 2
+            Label:
+                text: "FROM"
+                size_hint_y: None
+                font_size: 18
+                height: 33
+            TextInput:
+                id: start_date
+                multiline: False
+                size_hint: 1, None
+                font_size: 18
+                height: 33
+                text: 'yyyy-mm-dd'
+            Label:
+                text: "TO"
+                size_hint_y: None
+                font_size: 18
+                height: 33
+            TextInput:
+                id: end_date
+                multiline: False
+                size_hint: 1, None
+                font_size: 18
+                height: 33
+                text: 'yyyy-mm-dd'
+        Button:
+            text: "Check"
+            size_hint: 0.2, 0.2
+            pos_hint: {'x': .2, 'y': .2}
+            on_press:
+                root.check_range()
+        Button:
+            text: "Return to Menu"
+            size_hint: 0.3, 0.3
+            on_press:
+                app.root.current = 'selectview'
+        GridLayout:
+            id: grid_head
+            cols: 7
+            col_force_default: True
+            col_default_width: 200
+            row_force_default: True
+            row_default_height: 60
+            size_hint_y: .2
+
+            Label:
+                text: "No"
+            Label:
+                text: "DATE"
+            Label:
+                text: "TIME"
+            Label:
+                text: "CUSTOMER"
+            Label:
+                text: "COST"
+            Label:
+                text: "DRIVER"
+            Label:
+                text: "SECURITY"
+        ScrollView:
+
+            do_scroll_y: True
+            id: scroll_view
+            size_hint_y: 1
+
+            GridLayout:
+                cols: 7
+                id: grid_scroll
+                col_force_default: True
+                col_default_width: 200
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    id: cl1
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl7
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl2
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl3
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl4
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl5
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl6
+                    font_size: 12
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+
+
+<Check_Truck>:
+    name: "checktruck"
+    drivernam: drivernam
+    trucknum: trucknum
+    GridLayout:
+        cols: 1
+        spacing: 10
+        BoxLayout:
+            orientation: 'horizontal'
+            pos_hint: {'y': 1}
+            Button:
+                text: 'RETURN'
+                size_hint: 0.3, 0.3
+                height: 80
+                on_press:
+                    app.root.current = 'selectview'
+            Label:
+                text: "ENTER DRIVER/TRUCK FOR REVIEW"
+                size_hint: 1, 0.3
+                font_size: 30
+
+        GridLayout:
+            cols: 2
+            spacing: 10
+            Label:
+                text: "TRUCK NUMBER"
+                size_hint_y: None
+                font_size: 18
+                height: 33
+
+            TextInput:
+                id: trucknum
+                multiline: False
+                size_hint: 1, None
+                font_size: 18
+                height: 33
+
+
+            Label:
+                text: "DRIVER"
+                size_hint_y: None
+                font_size: 18
+                height: 33
+
+            TextInput:
+                id: drivernam
+                multiline: False
+                size_hint: 1, None
+                font_size: 18
+                height: 33
+        RelativeLayout:
+            Button:
+                text: 'CHECK'
+                size_hint: 0.3, 0.3
+                pos_hint: {'center_x': 0.5, 'y': 1}
+                on_press:
+                    root.show_truck_dtl()
+        GridLayout:
+            id: grid_head
+            cols: 7
+            col_force_default: True
+            col_default_width: 200
+            row_force_default: True
+            row_default_height: 60
+
+            Label:
+                text: "No"
+            Label:
+                text: "DATE"
+            Label:
+                text: "CUSTOMER"
+            Label:
+                text: "COST"
+            Label:
+                text: "DRIVER"
+            Label:
+                text: "TIME"
+            Label:
+                text: "SECURITY"
+
+        ScrollView:
+            size_hint_y: 1
+
+            do_scroll_y: True
+            id: scroll_view
+
+            GridLayout:
+                cols: 7
+                id: grid_scroll
+                col_force_default: True
+                col_default_width: 200
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    id: cl1
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl2
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl3
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl4
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl5
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl6
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
+                Label:
+                    id: cl7
+                    font_size: 15
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    halign: 'center'
+                    valign:'middle'
+                    line_height: 3
