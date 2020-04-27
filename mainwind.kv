@@ -1,0 +1,252 @@
+<LoginWind>:
+
+    sname: sname
+    passcode: passcode
+
+    GridLayout:
+        cols:1
+        padding: 20
+        Label:
+            text: 'TRUCK GATE PASS'
+            font_size: 30
+            bold: True
+
+        GridLayout
+            cols: 2
+            spacing: 10
+
+            Label:
+                text: "SECURITY"
+                font_size: 20
+                bold: True
+                size_hint_y: None
+                height: 40
+            TextInput:
+                id: sname
+                font_size: 20
+                size_hint_y: None
+                height: 40
+                multiline: False
+
+            Label:
+                text: "PASSWORD"
+                font_size: 20
+                bold: True
+                size_hint_y: None
+                height: 40
+            TextInput:
+                id: passcode
+                font_size: 30
+                size_hint_y: None
+                height: 40
+                valign: 'middle'
+                multiline: False
+                password: True
+        RelativeLayout:
+            Button:
+                text: "LOGIN"
+                size_hint: .3,.4
+                pos_hint: {'center_x': 0.5, 'y': 0.7}
+                on_release:
+                    root.check_user(sname)
+
+<EntrExit>:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        padding: 50
+        spacing: 10
+
+
+        Label:
+            text: "ENTRANCE OR EXIT"
+            size_hint: 1, None
+            pos_hint: {'y': 1}
+            height: root.height/5
+            bold: True
+            font_size: 30
+
+        Button:
+            text: "TRUCK ENTRANCE"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/5
+            on_release:
+                app.root.current = "entrancecheck"
+
+        Button:
+            text: "TRUCK EXIT"
+            size_hint: 0.5, None
+            pos_hint: {'center_x': 0.5}
+            height: root.height/5
+            on_release:
+                app.root.current = "exitcheck"
+
+<EntrWind>:
+
+    drivernm: drivernm
+    trucknum: trucknum
+    GridLayout:
+        cols: 1
+        id: entrancegrid
+        padding: 10
+        size: root.size
+
+        BoxLayout:
+            orientation: 'horizontal'
+            pos_hint: {'y': 1}
+
+            Button:
+                text: "Return"
+                font_size: 15
+                size_hint: 0.2, 0.3
+                on_release:
+                    root.b_entrext()
+            Label:
+                text: "TRUCK ENTRANCE"
+                size_hint: 1, None
+                height: 80
+                bold: True
+                font_size: 30
+                bold: True
+        GridLayout:
+            cols: 2
+            spacing: 15
+            Label:
+                text: "DRIVER"
+                font_size: 20
+                size_hint_y: None
+                height: 40
+                bold: True
+            TextInput:
+                id: drivernm
+                font_size: 30
+                size_hint: None, None
+                height: 40
+                width: root.width/2
+                multiline: False
+            Label:
+                text: "TRUCK"
+                font_size: 20
+                size_hint: 1, None
+                height: 40
+                bold: True
+            TextInput:
+                id: trucknum
+                size_hint: None, None
+                width: root.width/2
+                height: 40
+                font_size: 30
+                multiline: False
+        RelativeLayout:
+            Button:
+                text: "ENTER"
+                bold: True
+                size_hint: 0.4, 0.2
+                pos_hint: {'center_x': 0.5, 'y': 1}
+                on_press:
+                    root.submit_ent()
+
+
+<ExitWind>:
+    drivernm: drvname
+    trucknum: trucknum
+    ledger: ledgernm
+    tcost: tcost
+
+    GridLayout:
+        cols: 1
+        padding: 10
+        size: root.size
+        BoxLayout:
+            orientation: 'horizontal'
+            pos_hint: {'y': 1}
+            Button:
+                size_hint: None, None
+                text: "Return"
+                font_size: 15
+                size_hint: 0.2, 0.3
+                on_release:
+                    root.b_entrext()
+            Label:
+                text: "TRUCK EXIT"
+                size_hint: 1, None
+                height: 80
+                bold: True
+                font_size: 30
+                bold: True
+        GridLayout
+            cols: 2
+            spacing: 15
+
+            Label:
+                text: "CUSTOMER"
+                font_size: 20
+                size_hint: 1, None
+                height: 40
+                bold: True
+            TextInput:
+                id: ledgernm
+                multiline: False
+                size_hint: None, None
+                width: root.width/2
+                height: 40
+                font_size: 30
+                multiline: False
+
+            Label:
+                text: "COST"
+                font_size: 20
+                size_hint: 1, None
+                height: 40
+                bold: True
+            TextInput:
+                id: tcost
+                multiline: False
+                size_hint: None, None
+                width: root.width/2
+                height: 40
+                font_size: 30
+                input_filter: "int"
+                multiline: False
+
+            Label:
+                text: "DRIVER"
+                font_size: 20
+                size_hint: 1, None
+                height: 40
+                bold: True
+            TextInput:
+                id: drvname
+                multiline: False
+                size_hint: None, None
+                width: root.width/2
+                height: 40
+                font_size: 30
+                multiline: False
+
+            Label:
+                text: "TRUCK"
+                font_size: 20
+                size_hint: 1, None
+                height: 40
+                bold: True
+            TextInput:
+                id: trucknum
+                multiline: False
+                size_hint: None, None
+                width: root.width/2
+                height: 40
+                font_size: 30
+                multiline: False
+
+        RelativeLayout:
+            Button:
+                text: "ENTER"
+                bold: True
+                size_hint: 0.4, 0.2
+                pos_hint: {'center_x': 0.5, 'y': 0.5}
+                on_release:
+                    root.pssbtn()
+
